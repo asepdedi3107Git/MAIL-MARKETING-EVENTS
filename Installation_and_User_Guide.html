@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; margin: 40px; }
+    h1 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+    h2 { color: #34495e; margin-top: 30px; }
+    h3 { color: #4CAF50; }
+    code { background: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: Consolas, monospace; }
+    pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
+    .faq { background: #f9f9f9; padding: 15px; border-left: 4px solid #4CAF50; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+    <h1>Installation and User Guide for Mail Marketing Events System</h1>
+    <p>Welcome to the official guide for the Mail Marketing Events System. This system is designed to help you easily manage guest RSVPs and send marketing emails (such as Save the Date, Formal Invitations, etc.) for weddings or other special events.</p>
+
+    <h2>1. Installation Guide</h2>
+    <p>This system is web-based (PHP) and requires a web server with a MySQL/MariaDB database. If you are using cPanel/Hosting, follow these steps:</p>
+
+    <h3>A. File and Database Preparation</h3>
+    <ol>
+        <li><strong>Upload Files</strong>: Upload all system files into the <code>public_html</code> folder or your domain/subdomain folder.</li>
+        <li><strong>Create Database</strong>: Create a new MySQL database, along with a user and password, through the <em>MySQL Databases</em> menu in your cPanel.</li>
+    </ol>
+
+    <h3>B. Database Configuration</h3>
+    <ol>
+        <li>Open the <code>database.php</code> file using File Manager or a text editor.</li>
+        <li>Change the following configuration according to the database you have created:
+<pre><code>$host = 'localhost';
+$db   = 'your_database_name';
+$user = 'your_database_user';
+$pass = 'your_database_password';</code></pre>
+        </li>
+        <li>Save the changes to the <code>database.php</code> file.</li>
+    </ol>
+
+    <h3>C. Running Automated Setup</h3>
+    <ol>
+        <li>Open your browser and access the setup page: <code>https://yourdomain.com/setup.php</code> (adjust to the URL where you installed it).</li>
+        <li>The system will automatically create the necessary database tables and set up the first admin.</li>
+        <li>If a success message appears, click the link to go to the Login Page.</li>
+    </ol>
+
+    <h2>2. Basic User Guide</h2>
+    <p>After the installation is complete, you can start using the system through the Dashboard.</p>
+
+    <h3>A. Creating the Admin Account & Login</h3>
+    <ol>
+        <li>After running setup, open <code>https://yourdomain.com/create_admin.php</code>.</li>
+        <li>This secure page will allow you to create your first Super Admin account. Enter your preferred Username, Email, Business Name, and Password. (Note: For security reasons, this page will automatically lock itself once the first account is created).</li>
+        <li>After successfully creating the account, go to <code>https://yourdomain.com/login.php</code> to sign in.</li>
+        <li>Once logged in, you will be directed to the Dashboard page.</li>
+    </ol>
+
+    <h3>B. Brand Settings (White-label & General Settings)</h3>
+    <p>Before adding guests and sending emails, it is highly recommended to set up your event profile:</p>
+    <ol>
+        <li>Click the **Settings** menu (gear icon).</li>
+        <li>Fill in profile details such as Event/Couple Name, Event Date & Time, Location, and Google Maps URL.</li>
+        <li>You can configure the <strong>Email Provider</strong>. We highly recommend using <strong>SendGrid</strong> or your own hosting's <strong>Custom SMTP</strong>.</li>
+        <li>Click <strong>Save Settings</strong> at the bottom.</li>
+    </ol>
+
+    <h3>C. Managing Guests</h3>
+    <ol>
+        <li>Go to the <strong>Guests</strong> menu.</li>
+        <li>Click the <strong>Add Guest</strong> button to add guests manually, or use the <strong>Import</strong> button to insert multiple guests at once from a CSV file.</li>
+        <li>On this page, you can also see the RSVP status of each guest.</li>
+    </ol>
+
+    <h3>D. Configuring RSVP Questions</h3>
+    <ol>
+        <li>Open the <strong>RSVP Form</strong> menu.</li>
+        <li>Check the boxes for the questions you want to ask guests when they fill out the RSVP.</li>
+        <li>You can share the RSVP link with guests. Each guest's unique link can be copied from the <strong>Guests</strong> page.</li>
+    </ol>
+
+    <h3>E. Sending Email Campaigns</h3>
+    <ol>
+        <li>Open the <strong>Email Campaigns</strong> menu.</li>
+        <li>Click <strong>Create Campaign</strong>.</li>
+        <li>Select the type of email you want to send.</li>
+        <li>Determine who the email will be sent to.</li>
+        <li>Click <strong>Send Now</strong> or you can schedule it.</li>
+    </ol>
+
+    <h3>F. Scanner / Check-in Feature</h3>
+    <p>On the day of the event, your receptionist can use the Check-in feature:</p>
+    <ol>
+        <li>Create a receptionist account from the <strong>Settings</strong> page under <strong>Receptionist Accounts</strong>.</li>
+        <li>The receptionist logs in at <code>https://yourdomain.com/receptionist.php</code> using their username and PIN.</li>
+        <li>The receptionist can scan guest QR codes or manually search for guest names to perform Check-in.</li>
+    </ol>
+
+    <h2>Frequently Asked Questions (FAQ)</h2>
+    <div class="faq">
+        <p><strong>Q: Why are my emails going to the Spam folder?</strong></p>
+        <p>A: Make sure you are using a credible Email Provider (like SendGrid) and that the Sender Email is properly verified. Also, ensure that DNS settings (SPF, DKIM, DMARC) in your hosting are configured.</p>
+    </div>
+    <div class="faq">
+        <p><strong>Q: How do I delete a guest account?</strong></p>
+        <p>A: Open the <strong>Guests</strong> menu, find the guest you want to delete, then click the trash can icon (Delete) on the right side of the guest's name row.</p>
+    </div>
+    <div class="faq">
+        <p><strong>Q: Can I change the email colors?</strong></p>
+        <p>A: Yes, you can change the Primary and Secondary colors through the <strong>Settings</strong> menu, which will change the overall color theme on emails and the RSVP form.</p>
+    </div>
+
+    <p style="text-align: center; margin-top: 50px; color: #888;">&copy; Mail Marketing Events System</p>
+</body>
+</html>
